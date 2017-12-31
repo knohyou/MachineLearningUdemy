@@ -54,7 +54,7 @@ set = training_set
 X1 = seq(min(set[,1])-1, max(set[,1])+1, by = 0.01)
 X2 = seq(min(set[,2])-1, max(set[,2])+1, by =0.01)
 grid_set = expand.grid(X1,X2)
-colnames(grid_set) = c('LD1','LD2')
+colnames(grid_set) = c('x.LD1','x.LD2')
 y_grid = predict(classifier, newdata = grid_set)
 plot(set[,-3], 
      main = 'Logistic Regression (Training Set)',
@@ -73,12 +73,12 @@ set = test_set
 X1 = seq(min(set[,1])-1, max(set[,1])+1, by = 0.01)
 X2 = seq(min(set[,2])-1, max(set[,2])+1, by =0.01)
 grid_set = expand.grid(X1,X2)
-colnames(grid_set) = c('PC1','PC2')
+colnames(grid_set) = c('x.LD1','x.LD2')
 y_grid = predict(classifier, newdata = grid_set)
 plot(set[,-3], 
      main = 'Logistic Regression (Training Set)',
-     xlab = 'P1',
-     ylab =  'P2',
+     xlab = 'LD1',
+     ylab =  'LD2',
      xlim = range(X1),
      ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
